@@ -1,0 +1,43 @@
+const plugin = require("tailwindcss/plugin");
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.tsx", "./index.html"],
+  theme: {
+    fontFamily: {
+      sans: ["Inter", "sans-serif"],
+    },
+    extend: {
+      backgroundImage: {
+        galaxy: "url('./background-galaxy.png')",
+        "nlw-gradient":
+          "linear-gradient(89.86deg, #9572FC 27.08%, #43E7AD 33.94%, #E1D55D 48.57%)",
+        "game-gradient":
+          "linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 67.08%);",
+      },
+    },
+  },
+  plugins: [
+    plugin(({ addBase }) => {
+      addBase({
+        ".scrollbar::-webkit-scrollbar": {
+          width: "7px",
+          height: "7px",
+          marginRight: "10px",
+        },
+        ".scrollbar::-webkit-scrollbar-corner": {
+          border: "none",
+          background: "none",
+        },
+        ".scrollbar::-webkit-scrollbar-thumb": {
+          backgroundColor: "#3d3c42",
+          borderRadius: "3px",
+        },
+        ".scrollbar::-webkit-scrollbar-track-piece": {
+          backgroundColor: "transparent",
+          border: "none",
+        },
+      });
+    }),
+  ],
+};
